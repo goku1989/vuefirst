@@ -47,4 +47,17 @@ export default {
   .el-menu--popup{
     min-width: 140px;
   }
+  .el-checkbox__inner{
+    width:16px;
+    height: 16px;
+    border: 1px solid #999;
+  }
+  .el-checkbox__inner:after{
+    width: 6px;
+    height: 8px;
+  }
+  .el-form-item__content{
+    margin-left:0px!important;
+    width: 120px;
+  }
 </style>
