@@ -56,5 +56,8 @@ export default {
     width: 6px;
     height: 8px;
   }
-  
+  .el-form-item__content{
+    margin-left:0px!important;
+    width: 120px;
+  }
 </style>
