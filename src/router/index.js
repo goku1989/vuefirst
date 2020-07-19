@@ -6,7 +6,6 @@ import Home from "../components/Home"
 import Course from "../components/Course"
 import Cart from "@/components/Cart"
 
-
 // 这里导入可以让用户访问的组件
 Vue.use(Router);
 

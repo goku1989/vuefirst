@@ -4,11 +4,12 @@
       <div class="main">
         <div class="cart-title">
           <h3>我的购物车 <span> 共2门课程</span></h3>
+          <!-- <button v-on:click = 'getUserInfo'>获取数据</button> -->
           <el-table :data="courseData" style="width:100%">
             <el-table-column type="selection" label="" width="87"></el-table-column>
-            <el-table-column prop="title" label="课程" width="540"></el-table-column>
-            <el-table-column prop="expire" label="有效期" width="216"></el-table-column>
-            <el-table-column prop="price" label="单价" width="162"></el-table-column>
+            <el-table-column prop="gkCode" label="用户ID" width="540"></el-table-column>
+            <el-table-column prop="userName" label="用户名" width="162"></el-table-column>
+            <el-table-column prop="userEmail" label="邮箱" width="216"></el-table-column>
             <el-table-column label="操作" width="162"></el-table-column>
           </el-table>
         </div>
@@ -21,24 +22,31 @@
 <script>
 import Header from "./common/Header"
 import Footer from "./common/Footer"
+
 export default {
     name: "Cart",
     data(){
       return{
-        courseData:[
-          {title:"课程标题一",expire:"2016",price:"12.00"},
-          {title:"课程标题一",expire:"2016",price:"12.00"},
-          {title:"课程标题一",expire:"2016",price:"12.00"},
-          {title:"课程标题一",expire:"2016",price:"12.00"},
-          {title:"课程标题一",expire:"2016",price:"12.00"},
-          {title:"课程标题一",expire:"2016",price:"12.00"},
-          {title:"课程标题一",expire:"2016",price:"12.00"},
-          {title:"课程标题一",expire:"2016",price:"12.00"},
-        ]
+        courseData: []
+      }
+    },
+    created() {
+      this.getUserInfo();
+    },
+    methods: {
+      getUserInfo: function(){
+        this.$http.get("http://localhost:10001/user/userInfos")
+            .then(res => {
+              this.courseData = res.data;
+            })
+            .catch(err => {
+              alert("Wrong！！");
+            })
       }
     },
     components:{Header,Footer}
 }
+
 </script>
 
 <style scoped>
