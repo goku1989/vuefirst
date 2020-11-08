@@ -37,7 +37,7 @@ export default {
     },
     methods: {
       getUserInfo: function(){
-        this.$http.get("http://localhost:20010/v1/goods/goodsInfos")
+        this.$http.get("http://192.168.50.110:9000/v1/goods/goodsInfos")
             .then(res => {
               
               this.courseData = res.data.response;

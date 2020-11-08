@@ -10,11 +10,12 @@
           </el-col>
           <el-col class="nav" :span="16">
               <el-row>
-                <el-col :span="3"><router-link to="/">免费课</router-link></el-col>
-                <el-col :span="3"><router-link to="/">轻课</router-link></el-col>
-                <el-col :span="3"><router-link to="/">学位课</router-link></el-col>
-                <el-col :span="3"><router-link to="/">题库</router-link></el-col>
-                <el-col :span="3"><router-link to="/">教育</router-link></el-col>
+                <el-col :span="3"><router-link to="/">首页</router-link></el-col>
+                <el-col :span="3"><router-link to="/">秒杀</router-link></el-col>
+                <el-col :span="3"><router-link to="/">新房</router-link></el-col>
+                <el-col :span="3"><router-link to="/">二手房</router-link></el-col>
+                <el-col :span="3"><router-link to="/">商业办公</router-link></el-col>
+                <el-col :span="3"><router-link to="/">指南</router-link></el-col>
               </el-row>
           </el-col>
           <el-col class="login-bar" :span="5">
@@ -26,7 +27,7 @@
                   <span><router-link to="/cart">购物车</router-link></span>
                 </router-link>
               </el-col>
-              <el-col class="study" :span="8" :offset="2"><router-link to="">学习中心</router-link></el-col>
+              <el-col class="study" :span="8" :offset="2"><router-link to="">个人中心</router-link></el-col>
               <el-col class="member" :span="5">
                 <el-menu class="el-menu-demo" mode="horizontal">
                   <el-submenu index="2">
