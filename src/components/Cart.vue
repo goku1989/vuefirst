@@ -7,9 +7,11 @@
           <!-- <button v-on:click = 'getUserInfo'>获取数据</button> -->
           <el-table :data="courseData" style="width:100%">
             <el-table-column type="selection" label="" width="87"></el-table-column>
-            <el-table-column prop="gkCode" label="用户ID" width="540"></el-table-column>
-            <el-table-column prop="userName" label="用户名" width="162"></el-table-column>
-            <el-table-column prop="userEmail" label="邮箱" width="216"></el-table-column>
+            <el-table-column prop="cityName" label="所在城市" width="100"></el-table-column>
+            <el-table-column prop="goodsCode" label="商品编码" width="100"></el-table-column>
+            <el-table-column prop="goodsName" label="商品名称" width="162"></el-table-column>
+            <el-table-column prop="description" label="商品描述" width="450"></el-table-column>
+            <el-table-column prop="price" label="价格" width="100"></el-table-column>
             <el-table-column label="操作" width="162"></el-table-column>
           </el-table>
         </div>
@@ -35,9 +37,11 @@ export default {
     },
     methods: {
       getUserInfo: function(){
-        this.$http.get("http://localhost:10001/user/userInfos")
+        this.$http.get("http://localhost:20010/v1/goods/goodsInfos")
             .then(res => {
-              this.courseData = res.data;
+              
+              this.courseData = res.data.response;
+
             })
             .catch(err => {
               alert("Wrong！！");
