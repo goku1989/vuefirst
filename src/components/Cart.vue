@@ -12,7 +12,7 @@
             <el-table-column prop="goodsName" label="商品名称" width="162"></el-table-column>
             <el-table-column prop="description" label="商品描述" width="450"></el-table-column>
             <el-table-column prop="price" label="价格" width="100"></el-table-column>
-            <el-table-column label="操作" width="162"></el-table-column>
+            <el-table-column label="操作" width="80"></el-table-column>
           </el-table>
         </div>
         <div calss="cart-info"></div>
