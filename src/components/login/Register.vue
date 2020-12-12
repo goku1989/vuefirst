@@ -93,16 +93,12 @@
           if (valid) {
             var url = "http://192.168.50.110:9001/v1/user/userInfo"
             let formData = JSON.stringify(this.ruleForm)
-            console.log(formData);
             axios.post(url, formData,{headers: {
               'Content-Type': 'application/json'
             }}).then(res => {
-              console.log(res.data.code);
-              debugger;
               if (res.data.code === "200") {
                 alert("成功");
               }
-              
             })
           } else {
             console.log('error submit!!');
