@@ -24,15 +24,5 @@
 </script>
 
 <style >
-  .el-carousel__arrow{
-    width: 100px!important;
-    height: 100px!important;
-  }
-  .el-icon-arrow-left{
-    font-size: 35px;
-    margin-left: 50px;
-  }
-  .el-carousel__arrow--left{
-    left: -50px;
-  }
+
 </style>
