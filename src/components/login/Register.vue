@@ -94,12 +94,6 @@
             var url = "http://localhost:20030/v1/user/userInfo"
             let formData = JSON.stringify(this.ruleForm)
             console.log(formData);
-            // this.$http.post(url, formData,).then(function(res){
-            //   console.log(res);
-            //   if (res.status === 200) {
-            //     alert('提交成功');
-            //   }
-            // })
             axios.post(url, formData,{headers: {
               'Content-Type': 'application/json'
             }}).then(res => {
