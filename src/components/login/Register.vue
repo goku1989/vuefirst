@@ -107,7 +107,9 @@
         });
       },
       resetForm(formName) {
-        this.$refs[formName].resetFields();
+        this.$router.push({
+          name:'Login'
+        });
       }
     }
   }

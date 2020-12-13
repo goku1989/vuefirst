@@ -3,10 +3,9 @@ import Router from "vue-router"
 
 // 后面这里引入可以被用户访问的页面组件
 import Home from "../components/Home"
-import Course from "../components/Course"
-import Cart from "@/components/Cart"
 import Login from '@/components/login/Login'
 import Register from '@/components/login/Register'
+import Goodslist from '../components/goods/goodslist'
 
 // 这里导入可以让用户访问的组件
 Vue.use(Router);
@@ -34,13 +33,12 @@ export default  new Router({
             // component: 组件类名,
             component: Home,
         },{
-          path: "/course",
-          name: "Course",
-          component: Course,
-        },{
-          name:"Cart",
-          path: "/cart",
-          component: Cart,
-        },
+          // path: "路由地址",
+          path: "/goodslist",
+          // name:"路由别名",
+          name:"Goodslist",
+          // component: 组件类名,
+          component: Goodslist,
+      }
     ]
 })

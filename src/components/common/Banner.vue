@@ -46,7 +46,7 @@
             <span slot="title">安装/维修/清洗/二手</span>
           </el-menu-item>
           <el-menu-item index="13">
-            <span slot="title">医药保健/计生情趣</span>
+            <span slot="title">理财/众筹/白条/保险</span>
           </el-menu-item>
         </el-menu>
       </el-col>
