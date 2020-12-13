@@ -1,10 +1,129 @@
 <template>
-  <div class="banner">
-      <el-carousel trigger="click" height="506px">
-        <el-carousel-item v-for="banner in banner_list" v-bind:key="banner.id">
-          <a :href="banner.link"><img width="100%" :src="banner.img" alt=""></a>
-        </el-carousel-item>
-      </el-carousel>
+
+  <div class="main-body">
+    <div class="inner-body">
+    <el-row :gutter="10">
+      <el-col :span="4">
+        <el-menu
+          default-active="0"
+          class="el-menu-vertical-demo"
+          @open="handleOpen"
+          @close="handleClose">
+          <el-menu-item index="1">
+            <span slot="title">家用电器</span>
+          </el-menu-item>
+          <el-menu-item index="2">
+            <span slot="title">手机/运营商/数码</span>
+          </el-menu-item>
+          <el-menu-item index="3">
+            <span slot="title">电脑/办公</span>
+          </el-menu-item>
+          <el-menu-item index="4">
+            <span slot="title">家具/家装/厨具</span>
+          </el-menu-item>
+          <el-menu-item index="5">
+            <span slot="title">男装/女装/童装</span>
+          </el-menu-item>
+          <el-menu-item index="6">
+            <span slot="title">美妆/个护清洁/宠物</span>
+          </el-menu-item>
+          <el-menu-item index="7">
+            <span slot="title">房产/汽车/汽车用品</span>
+          </el-menu-item>
+          <el-menu-item index="8">
+            <span slot="title">母婴/玩具/乐器</span>
+          </el-menu-item>
+          <el-menu-item index="9">
+            <span slot="title">图书/文娱/教育/电子书</span>
+          </el-menu-item>
+          <el-menu-item index="10">
+            <span slot="title">机票/酒店/旅游/生活</span>
+          </el-menu-item>
+          <el-menu-item index="11">
+            <span slot="title">理财/众筹/白条/保险</span>
+          </el-menu-item>
+          <el-menu-item index="12">
+            <span slot="title">安装/维修/清洗/二手</span>
+          </el-menu-item>
+          <el-menu-item index="13">
+            <span slot="title">医药保健/计生情趣</span>
+          </el-menu-item>
+        </el-menu>
+      </el-col>
+      <el-col :span="10">
+        <el-carousel trigger="click" height="480px">
+          <el-carousel-item v-for="banner in banner_list" v-bind:key="banner.id">
+            <a :href="banner.link"><img width="100%" :src="banner.img" class="banner_img" alt=""></a>
+          </el-carousel-item>
+        </el-carousel>
+      </el-col>
+      <el-col :span="4">
+        <div><img :src="right_img1" class="right_img"></div>
+        <div><img :src="right_img2" class="right_img"></div>
+        <div><img :src="right_img3" class="right_img"></div>
+        </el-col>
+      <el-col :span="4">
+        <el-card class="box-card">
+          <div class="demo-basic--circle">
+            <div class="face_icon">
+              <el-avatar :size="40" :src="circleUrl"></el-avatar>
+              <i class="el-icon-user-solid"></i>
+              <span class="face_icon_span">Hi!  独爱土豆</span>
+              <i class="el-icon-s-tools">   设置</i>
+            </div>
+          </div>
+          <el-divider></el-divider>
+          <div>
+            <span class="span_mid_top">一点资讯</span>
+            <i class="el-icon-more right"></i>
+          </div>
+          <div>
+            <span class="span_mid_main">倍思 三合一数据线5A/6A...</span>
+          </div>
+          <div>
+            <span class="span_mid_main">趣多多 香脆巧克力味曲奇...</span>
+          </div>
+          <div>
+            <span class="span_mid_main">全套20册小学生作文书大...</span>
+          </div>
+          <div>
+            <span class="span_mid_main">HUAWEI Hilink华为智选A...</span>
+          </div>
+          <el-divider class="divider_top"></el-divider>
+          <div>
+            <i class="el-icon-mobile-phone posi"></i>
+            <i class="el-icon-s-promotion posi"></i>
+            <i class="el-icon-office-building posi"></i>
+          </div>
+          <div>
+            <span class="icon_bottom11">话费</span>
+            <span class="icon_bottom12">机票</span>
+            <span class="icon_bottom13">酒店</span>
+          </div>
+          <div>
+            <i class="el-icon-film posi"></i>
+            <i class="el-icon-toilet-paper posi"></i>
+            <i class="el-icon-present posi"></i>
+          </div>
+           <div>
+            <span class="icon_bottom21">电影</span>
+            <span class="icon_bottom22">卫浴</span>
+            <span class="icon_bottom23">礼品</span>
+          </div>
+          <div>
+            <i class="el-icon-burger posi"></i>
+            <i class="el-icon-mic posi"></i>
+            <i class="el-icon-bicycle posi"></i>
+          </div>
+           <div>
+            <span class="icon_bottom31">美食</span>
+            <span class="icon_bottom32">娱乐</span>
+            <span class="icon_bottom33">运动</span>
+          </div>
+        </el-card>
+      </el-col>
+    </el-row>
+    </div>
   </div>
 </template>
 
@@ -13,16 +132,221 @@
     name:"Banner",
     data(){
       return {
+        right_img1:require("../../assets/11.jpg"),
+        right_img2:require("../../assets/13.jpg"),
+        right_img3:require("../../assets/12.jpg"),
         banner_list:[
-          {link:"http://www.baidu.com",img:"/static/banner/ironman1.jpg"},
-          {link:"http://www.baidu.com",img:"/static/banner/ironman2.jpeg"},
-          {link:"http://www.baidu.com",img:"/static/banner/ironman3.jpg"},
+          {link:"http://www.baidu.com",img:"/static/banner/1.jpg"},
+          {link:"http://www.baidu.com",img:"/static/banner/2.jpg"},
+          {link:"http://www.baidu.com",img:"/static/banner/3.jpg"},
+          {link:"http://www.baidu.com",img:"/static/banner/4.jpg"},
         ]
       };
     }
   }
 </script>
 
-<style >
+<style scoped>
+  .inner-body {
+    position:relative;
+    top: 10px;
+    left: 50px;
+  }
+  .main-body {
+    position:relative;
+    width: 95%;
+    background: #f5f5f5;
+  }
+  .el-row {
+    margin-bottom: 10px;
+   
+  }
+  .el-col {
+    border-radius: 4px;
+  }
+  .el-menu-item {
+    height: 35px;
+    line-height: 35px;
+  }
+  .bg-purple-dark {
+    background: #99a9bf;
+  }
+  .bg-purple {
+    background: #d3dce6;
+  }
+  .bg-purple-light {
+    background: #e5e9f2;
+  }
+ 
+  .banner_img {
+    height: 456px;
+    width: 590px;
+  }
+  .right_img {
+    height: 149px;
+    width: 210px;
+  }
+  .el-icon-user-solid {
+    position:relative;
+    top: -25px;
+    left: 15px;
+    font-size: 20px;
+    color: #84c0f1;
+  }
+  .face_icon_span {
+    position:relative;
+    top: -25px;
+    left: 15px;
+  }
+  .el-icon-s-tools {
+    position:relative;
+    top: -15px;
+    left: 120px;
+    color: #5d6063;
+    font-size: 17px;
+  }
+  .el-icon-mobile-phone {
+    position:relative;
+    top: -45px;
+    left: 20px;
+    color: #0080ff;
+    font-size: 30px;
+  }
+  .el-icon-s-promotion {
+    position:relative;
+    top: -45px;
+    left: 45px;
+    color: #ff8800;
+    font-size: 30px;
+  }
+  .el-icon-office-building {
+    position:relative;
+    top: -45px;
+    left: 70px;
+    color: #00ff40;
+    font-size: 30px;
+  }
+  .el-icon-film {
+    position:relative;
+    left: 20px;
+    top: -25px;
+    color: #ff1100;
+    font-size: 30px;
+  }
+  .el-icon-toilet-paper {
+    position:relative;
+    left: 45px;
+    top: -25px;
+    color: #1eff00;
+    font-size: 30px;
+  }
+  .el-icon-present {
+    position:relative;
+    left: 70px;
+    top: -25px;
+    color: #0080ff;
+    font-size: 30px;
+  }
+  .el-icon-burger {
+    position:relative;
+    left: 20px;
+    top: -5px;
+    color: #ff8800;
+    font-size: 30px;
+  }
+  .el-icon-mic {
+    position:relative;
+    left: 45px;
+    top: -5px;
+    color: #0080ff;
+    font-size: 30px;
+  }
+  .el-icon-bicycle {
+    position:relative;
+    left: 70px;
+    top: -5px;
+    color: #ff1100;
+    font-size: 30px;
+  }
+  .icon_bottom11{
+    position:relative;
+    top: -40px;
+    left: 20px;
+    font-size: 15px;
+  }
+  .icon_bottom12{
+    position:relative;
+    top: -40px;
+    left: 45px;
+    font-size: 15px;
+  }
+  .icon_bottom13{
+    position:relative;
+    top: -40px;
+    left: 70px;
+    font-size: 15px;
+  }
 
+  .icon_bottom21{
+    position:relative;
+    top: -20px;
+    left: 20px;
+    font-size: 15px;
+  }
+  .icon_bottom22{
+    position:relative;
+    top: -20px;
+    left: 45px;
+    font-size: 15px;
+  }
+  .icon_bottom23{
+    position:relative;
+    top: -20px;
+    left: 70px;
+    font-size: 15px;
+  }
+
+  .icon_bottom31{
+    position:relative;
+
+    left: 20px;
+    font-size: 15px;
+  }
+  .icon_bottom32{
+    position:relative;
+    
+    left: 45px;
+    font-size: 15px;
+  }
+  .icon_bottom33{
+    position:relative;
+    
+    left: 70px;
+    font-size: 15px;
+  }
+
+  .box-card {
+    position:relative;
+    height: 456px;
+  }
+  
+  .span_mid_top {
+    position:relative;
+    top: -20px;
+  }
+  .el-icon-more {
+    position:relative;
+    left: 100px;
+    top: -20px;
+  }
+  .span_mid_main {
+    position:relative;
+
+    top: -10px;
+    font-size: 10px;
+  }
+  .divider_top {
+    position:relative;
+    top: -30px;
+  }
 </style>

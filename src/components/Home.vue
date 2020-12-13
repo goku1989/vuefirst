@@ -24,7 +24,5 @@
 </script>
 
 <style scoped>
-.home{
-  padding-top: 80px;
-}
+
 </style>

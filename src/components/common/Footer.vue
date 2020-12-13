@@ -18,7 +18,9 @@
   export default {
     name:"Footer",
     data(){
-      return {}
+      return {
+        
+      }
     }
   }
 </script>
@@ -26,7 +28,7 @@
 
 <style scoped>
 .footer{
-  width: 100%;
+  width: 95%;
   height: 128px;
   background: #25292e;
 }
