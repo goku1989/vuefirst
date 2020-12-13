@@ -15,13 +15,13 @@
               <tr height="100px">
                 <td>用户名：</td>
                 <td>
-                  <el-input v-model="user.username" placeholder="请输入用户名"></el-input>
+                  <el-input v-model="user.nickName" placeholder="请输入用户名"></el-input>
                 </td>
               </tr>
               <tr>
                 <td>密码：</td>
                 <td>
-                  <el-input type="password" v-model="user.password" placeholder="请输入密码" @keydown.enter.native="doLogin"></el-input>
+                  <el-input type="password" v-model="user.userPassword" placeholder="请输入密码" @keydown.enter.native="doLogin"></el-input>
                   <!-- @keydown.enter.native="doLogin"当按下enter键的时候也会执行doLogin方法-->
                 </td>
               </tr>
@@ -109,6 +109,7 @@
 </style>
 
 <script>
+  import axios from 'axios'
   export default {
     //单页面中不支持前面的data:{}方式
     data() {
@@ -116,15 +117,33 @@
       return{
         loginLogo:require("../../assets/login-logo.jpg"),
         user:{
-          username:'',
-          password:'',
+          nickName:'',
+          userpassword:'',
           //为了登录方便，可以直接在这里写好用户名和密码的值
         }
       }
     },
     methods:{
       doLogin(){//一点击登录按钮，这个方法就会执行
-        alert(JSON.stringify(this.user))//可以直接把this.user对象传给后端进行校验用户名和密码
+        var url = "http://192.168.50.110:9001/db-authority/v1/login/login";
+        //可以直接把this.user对象传给后端进行校验用户名和密码
+        let userData = JSON.stringify(this.user)
+        
+        axios.post(url, userData,{headers: {
+              'Content-Type': 'application/json'
+            }}).then(res => {
+              if (res.data.code === "200") {
+                if (res.data.response != null) {
+                  this.$router.push({
+                    name:'Home'
+                  });
+                } else {
+                  alert("用户名或密码错误");
+                }
+              } else if (res.data.code === "500") {
+                alert(res.data.message);
+              }
+            })
       },
       doRegister:function(){
         this.$router.push({

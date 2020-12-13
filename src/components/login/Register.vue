@@ -91,7 +91,7 @@
       onSubmit(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            var url = "http://192.168.50.110:9001/v1/user/userInfo"
+            var url = "http://192.168.50.110:9001/db-authority/v1/user/userInfo"
             let formData = JSON.stringify(this.ruleForm)
             axios.post(url, formData,{headers: {
               'Content-Type': 'application/json'
