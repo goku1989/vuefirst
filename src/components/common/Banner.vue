@@ -6,48 +6,10 @@
       <el-col :span="4">
         <el-menu
           default-active="0"
-          class="el-menu-vertical-demo"
-          @open="handleOpen"
-          @close="handleClose">
-          <el-menu-item index="1">
-            <span slot="title">家用电器</span>
-          </el-menu-item>
-          <el-menu-item index="2">
-            <span slot="title">手机/运营商/数码</span>
-          </el-menu-item>
-          <el-menu-item index="3">
-            <span slot="title">电脑/办公</span>
-          </el-menu-item>
-          <el-menu-item index="4">
-            <span slot="title">家具/家装/厨具</span>
-          </el-menu-item>
-          <el-menu-item index="5">
-            <span slot="title">男装/女装/童装</span>
-          </el-menu-item>
-          <el-menu-item index="6">
-            <span slot="title">美妆/个护清洁/宠物</span>
-          </el-menu-item>
-          <el-menu-item index="7">
-            <span slot="title">房产/汽车/汽车用品</span>
-          </el-menu-item>
-          <el-menu-item index="8">
-            <span slot="title">母婴/玩具/乐器</span>
-          </el-menu-item>
-          <el-menu-item index="9">
-            <span slot="title">图书/文娱/教育/电子书</span>
-          </el-menu-item>
-          <el-menu-item index="10">
-            <span slot="title">机票/酒店/旅游/生活</span>
-          </el-menu-item>
-          <el-menu-item index="11">
-            <span slot="title">理财/众筹/白条/保险</span>
-          </el-menu-item>
-          <el-menu-item index="12">
-            <span slot="title">安装/维修/清洗/二手</span>
-          </el-menu-item>
-          <el-menu-item index="13">
-            <span slot="title">理财/众筹/白条/保险</span>
-          </el-menu-item>
+          class="el-menu-vertical-demo">
+          <el-submenu v-for="item in menuList" :key="item.name" :index="item.name">
+            <template slot="title"><span>{{item.name}}</span></template>
+          </el-submenu>
         </el-menu>
       </el-col>
       <el-col :span="10">
@@ -128,10 +90,12 @@
 </template>
 
 <script>
+  import axios from 'axios'
   export default {
     name:"Banner",
     data(){
       return {
+        menuList:[],
         right_img1:require("../../assets/11.jpg"),
         right_img2:require("../../assets/13.jpg"),
         right_img3:require("../../assets/12.jpg"),
@@ -142,6 +106,26 @@
           {link:"http://www.baidu.com",img:"/static/banner/4.jpg"},
         ]
       };
+    },
+    created(){
+      this.getMenuList()
+    },
+    methods:{
+      getMenuList(){
+        var url = "http://127.0.0.1:25000/goodsCategory/getCategories";
+        axios.get(url)
+        .then(res => res.data)
+        .then(data => {
+          
+          if(data.code === "200") {
+            console.log("1")
+            this.menuList = data.response
+            console.log("2")
+            console.log(data)
+            console.log(menuList)
+          }
+        });
+      }
     }
   }
 </script>
