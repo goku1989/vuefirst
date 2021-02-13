@@ -63,8 +63,7 @@
               value: 'gkcode',
               label: 'name',
               children: 'children',
-              expandTrigger: 'hover',
-              checkStrictly: true  
+              expandTrigger: 'hover'
         },
         goodsCategoryTree:[]
       }
