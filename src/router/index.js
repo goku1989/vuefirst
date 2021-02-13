@@ -6,6 +6,7 @@ import Home from "../components/Home"
 import Login from '@/components/login/Login'
 import Register from '@/components/login/Register'
 import Goodslist from '../components/goods/goodslist'
+import AddGoods from '../components/goods/AddGoods'
 
 // 这里导入可以让用户访问的组件
 Vue.use(Router);
@@ -39,6 +40,13 @@ export default  new Router({
           name:"Goodslist",
           // component: 组件类名,
           component: Goodslist,
-      }
+      },{
+        // path: "路由地址",
+        path: "/AddGoods",
+        // name:"路由别名",
+        name:"AddGoods",
+        // component: 组件类名,
+        component: AddGoods,
+    }
     ]
 })
