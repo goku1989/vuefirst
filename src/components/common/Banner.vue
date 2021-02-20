@@ -112,17 +112,13 @@
     },
     methods:{
       getMenuList(){
-        var url = "http://127.0.0.1:25000/goodsCategory/getCategories";
+        var url = "http://101.200.171.172:20000/dbmall-goods/goodsCategory/getCategories";
+        // var url = "http://localhost:25000/goodsCategory/getCategories";
         axios.get(url)
         .then(res => res.data)
         .then(data => {
-          
           if(data.code === "200") {
-            console.log("1")
             this.menuList = data.response
-            console.log("2")
-            console.log(data)
-            console.log(menuList)
           }
         });
       }
@@ -332,5 +328,8 @@
   .divider_top {
     position:relative;
     top: -30px;
+  }
+  .el-submenu {
+    height: 42px;
   }
 </style>

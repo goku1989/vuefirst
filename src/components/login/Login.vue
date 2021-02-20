@@ -108,6 +108,7 @@
   
 </style>
 
+<script type="text/javascript" src="js/app.js"></script>
 <script>
   import axios from 'axios'
   export default {
@@ -125,7 +126,12 @@
     },
     methods:{
       doLogin(){//一点击登录按钮，这个方法就会执行
-        var url = "http://192.168.50.110:9001/db-authority/v1/login/login";
+        var serverUrl = app.serverUrl;
+        console.log(serverUrl)
+        // var url = "http://192.168.50.110:9001/db-authority/v1/login/login";
+        // var url = "http://localhost:20030/v1/login/login"
+        var url = serverUrl + "/v1/login/login"
+        
         //可以直接把this.user对象传给后端进行校验用户名和密码
         let userData = JSON.stringify(this.user)
         
