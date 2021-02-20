@@ -43,6 +43,8 @@
 
 <script>
   import axios from 'axios'
+  import {constUrl} from "../../js/url.js";
+
   export default {
     data() {
       var validatePass = (rule, value, callback) => {
@@ -91,14 +93,29 @@
       onSubmit(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            // var url = "http://192.168.50.110:9001/db-authority/v1/user/userInfo"
-            var url = "http://localhost:20030/v1/user/userInfo"
+            var authorityUrl = constUrl.authorityUrl;
+            var url = authorityUrl + "/v1/user/userInfo"
+
             let formData = JSON.stringify(this.ruleForm)
             axios.post(url, formData,{headers: {
               'Content-Type': 'application/json'
             }}).then(res => {
+              console.log(res.data)
               if (res.data.code === "200") {
-                alert("成功");
+                if (res.data.data == 0) {
+                  this.$message({
+                    message: res.data.message,
+                    type: 'success'
+                  });
+                  this.$router.push({
+                    name:'Home'
+                  });
+                } else if (res.data.data == 1) {
+                  this.$message({
+                    message: res.data.message,
+                    type: 'warning'
+                  });
+                }
               }
             })
           } else {

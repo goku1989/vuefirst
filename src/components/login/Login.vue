@@ -108,9 +108,10 @@
   
 </style>
 
-<script type="text/javascript" src="js/app.js"></script>
+
 <script>
   import axios from 'axios'
+  import {constUrl} from "../../js/url.js";
   export default {
     //单页面中不支持前面的data:{}方式
     data() {
@@ -126,11 +127,8 @@
     },
     methods:{
       doLogin(){//一点击登录按钮，这个方法就会执行
-        var serverUrl = app.serverUrl;
-        console.log(serverUrl)
-        // var url = "http://192.168.50.110:9001/db-authority/v1/login/login";
-        // var url = "http://localhost:20030/v1/login/login"
-        var url = serverUrl + "/v1/login/login"
+        var authorityUrl = constUrl.authorityUrl;
+        var url = authorityUrl + "/v1/login/login"
         
         //可以直接把this.user对象传给后端进行校验用户名和密码
         let userData = JSON.stringify(this.user)
@@ -139,15 +137,15 @@
               'Content-Type': 'application/json'
             }}).then(res => {
               if (res.data.code === "200") {
-                if (res.data.response != null) {
+                if (res.data.data != null) {
                   this.$router.push({
                     name:'Home'
                   });
                 } else {
-                  alert("用户名或密码错误");
+                  this.$message.error('用户名或密码错误');
                 }
               } else if (res.data.code === "500") {
-                alert(res.data.message);
+                this.$message.error(res.data.message);
               }
             })
       },

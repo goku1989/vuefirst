@@ -39,6 +39,7 @@
 
 <script>
   import axios from 'axios'
+  import {constUrl} from "../../js/url.js";
   export default {
     data() {
       return {
@@ -68,8 +69,9 @@
     },
     methods: {
       getGoodsCategoryTree(){
-        var url = "http://101.200.171.172:20000/dbmall-goods/goodsCategory/getCategories";
-        // var url = "http://localhost:25000/goodsCategory/getCategories";
+        var goodsUrl = constUrl.goodsUrl;
+        var url = goodsUrl + "/goodsCategory/getCategories"
+        
         axios.get(url)
         .then(res => res.data)
         .then(data => {
@@ -106,20 +108,20 @@
             
             
             if (valid) {
-                var url = "http://101.200.171.172:20000/dbmall-goods/goodsCategory/insertCategory"
-                // var url = "http://localhost:25000//goodsCategory/insertCategory"
-                let formData = JSON.stringify(this.ruleForm)
-                axios.post(url, formData,{headers: {
-                'Content-Type': 'application/json'
-                }}).then(res => {
-                if (res.data.code === "200") {
-                    this.$message({
-                    message: '保存成功',
-                    type: 'success'
-                    });
-                    // this.$router.go(0);
-                }
-                })
+              var authorityUrl = constUrl.goodsUrl;
+              var url = authorityUrl + "/goodsCategory/insertCategory"
+              let formData = JSON.stringify(this.ruleForm)
+              axios.post(url, formData,{headers: {
+              'Content-Type': 'application/json'
+              }}).then(res => {
+              if (res.data.code === "200") {
+                  this.$message({
+                  message: '保存成功',
+                  type: 'success'
+                  });
+                  // this.$router.go(0);
+              }
+              })
             } else {
                 this.$message.error('保存失败');
                 return false;

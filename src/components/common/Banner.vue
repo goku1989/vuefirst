@@ -91,6 +91,7 @@
 
 <script>
   import axios from 'axios'
+  import {constUrl} from "../../js/url.js";
   export default {
     name:"Banner",
     data(){
@@ -112,8 +113,9 @@
     },
     methods:{
       getMenuList(){
-        var url = "http://101.200.171.172:20000/dbmall-goods/goodsCategory/getCategories";
-        // var url = "http://localhost:25000/goodsCategory/getCategories";
+        var goodsUrl = constUrl.goodsUrl;
+        var url = goodsUrl + "goodsCategory/getCategories"
+
         axios.get(url)
         .then(res => res.data)
         .then(data => {
